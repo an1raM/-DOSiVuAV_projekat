@@ -1,9 +1,9 @@
 import os
 import cv2 as cv
 import numpy as np
-#project_video
-INPUT_VIDEO = 'test_videos/challenge02.mp4'
-OUTPUT_VIDEO = 'docs/video_out.mp4'
+
+INPUT_VIDEO = 'test_videos/project_video02.mp4'
+OUTPUT_VIDEO = 'docs/hough_video_out.mp4'
 SMOOTHING = 0.8
 
 

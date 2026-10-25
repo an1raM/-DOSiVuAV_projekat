@@ -18,7 +18,7 @@ def sobel_x_mask(img, thresh=40, ksize=3):
 def color_mask(img):
     """Binary mask of yellow and white lane markings in HSV."""
     hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
-    yellow = cv.inRange(hsv, np.array([15, 80, 100]), np.array([35, 255, 255]))
+    yellow = cv.inRange(hsv, np.array([15, 80, 60]), np.array([35, 255, 255]))
     white = cv.inRange(hsv, np.array([0, 0, 200]), np.array([179, 30, 255]))
     return cv.bitwise_or(yellow, white)
 
@@ -30,14 +30,12 @@ def threshold(img):
     return cv.morphologyEx(combined, cv.MORPH_OPEN, kernel)
 
 if __name__ == '__main__':
-    img = undistort(cv.imread('test_images/test6.jpg'))
+    img = undistort(cv.imread('test_images/test4.jpg'))
 
-    sobel = sobel_x_mask(img)
-    color = color_mask(img)
     combined = threshold(img)
 
-    cv.imwrite('docs/binary_combo_example.png', np.hstack((sobel, color, combined)))
+    cv.imwrite('docs/binary_combo_example.png', combined)
 
-    cv.imshow('Sobel X | Color | Combined', np.hstack((sobel, color, combined)))
+    cv.imshow('Tresholded binary', combined)
     cv.waitKey(0)
     cv.destroyAllWindows()

@@ -35,7 +35,7 @@ cv2.destroyAllWindows()
 
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(
     objectPointsArray, imgPointsArray, gray.shape[::-1], None, None)
-np.savez('camera_cal/calib.npz', mtx=mtx, dist=dist, rvecs=rvecs, tvecs=tvecs)
+np.savez('camera_cal/calib.npz', mtx=mtx, dist=dist)
 
 error = 0
 for i in range(len(objectPointsArray)):
